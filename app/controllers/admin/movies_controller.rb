@@ -1,4 +1,5 @@
 class Admin::MoviesController < ApplicationController
+  before_action :check_if_admin
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/movies
@@ -54,4 +55,8 @@ class Admin::MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit(:title, :description, :votes, :rating, :category_id)
     end
+
+  def check_if_admin
+    redirect_to root_path, alert: 'Only admins have access to Admin section' unless current_user&.is_admin?
+  end
 end

@@ -1,28 +1,52 @@
-<h1>Movies</h1>
+<div class="row">
+  <div class="col">
+    <h1>Movies</h1>
+  </div>
+  <div class="col mt-2">
+    <div class="dropdown float-right">
+      <b>Category: </b>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= params[:category].present? ? Category.find(params[:category]).name : 'All Categories' %>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% if params[:category].present? %>
+          <%= link_to('All categories', root_path, class: "dropdown-item")  %>
+          <div class="dropdown-divider"></div>
+        <% end %>
+        <% Category.all.each do |category| %>
+          <a class="dropdown-item" href="/movies/?category=<%= category.id %>"><%= category.name %></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <% movies_pag =  @movies.page(params[:page])%>
 <%= paginate movies_pag %>
 
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">
-    <div class="row">
-      <div class="col-6 font-weight-bold">Title</div>
-      <div class="col-2 font-weight-bold">Category</div>
-      <div class="col-1 font-weight-bold">Votes</div>
-      <div class="col-1 font-weight-bold">Rating</div>
-      <div class="col-2 font-weight-bold">Your Rating</div>
-    </div>
-  </li>
-
-  <% movies_pag.each do |movie| %>
+<div>
+  <ul class="list-group list-group-flush">
     <li class="list-group-item">
       <div class="row">
-        <div class="col-6"><%= link_to movie.title, admin_movie_path(movie) %></div>
-        <div class="col-2"><%= movie.category.name %></div>
-        <div class="col-1"><%= movie.votes %></div>
-        <div class="col-1"><%= movie.rating %></div>
-        <div class="col-2">Your Rating</div>
+        <div class="col-5 font-weight-bold">Title</div>
+        <div class="col-3 font-weight-bold">Category</div>
+        <div class="col-1 font-weight-bold">Votes</div>
+        <div class="col-1 font-weight-bold">Rating</div>
+        <div class="col-2 font-weight-bold">Your Rating</div>
       </div>
     </li>
-  <% end %>
-</ul>
-<%= paginate movies_pag %>
+
+    <% movies_pag.each do |movie| %>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-5"><%= link_to movie.title, movie_path(movie) %></div>
+          <div class="col-3"><%= movie.category.name %></div>
+          <div class="col-1"><%= movie.votes %></div>
+          <div class="col-1"><%= movie.rating %></div>
+          <div class="col-2">Your Rating</div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate movies_pag %>
+</div>

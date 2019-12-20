@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+User.create(email:'admin@admin.com', password: 'password', is_admin: true)
 
 10.times do
   category = Category.create(name: Faker::Book.unique.genre)
