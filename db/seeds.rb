@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+10.times do
+  category = Category.create(name: Faker::Book.unique.genre)
+  10.times do
+    category.movies.create(title: Faker::Book.unique.title, description: Faker::Movie.quote )
+  end
+end

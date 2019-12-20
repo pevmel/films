@@ -32,6 +32,7 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'friendly_id', '~> 5.2.4'
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

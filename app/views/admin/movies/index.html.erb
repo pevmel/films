@@ -1,0 +1,34 @@
+<h1>Movies</h1>
+<%= link_to '+ New Movie', new_admin_movie_path, class: 'btn btn-large btn-primary float-right' %>
+<% movies_pag =  @movies.page(params[:page])%>
+<%= paginate movies_pag %>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col-6 font-weight-bold">Title</div>
+      <div class="col-2 font-weight-bold">Category</div>
+      <div class="col-1 font-weight-bold">Votes</div>
+      <div class="col-1 font-weight-bold">Rating</div>
+      <div class="col-2 font-weight-bold"></div>
+    </div>
+  </li>
+
+  <% movies_pag.each do |movie| %>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-6"><%= link_to movie.title, admin_movie_path(movie) %></div>
+        <div class="col-2"><%= movie.category.name %></div>
+        <div class="col-1"><%= movie.votes %></div>
+        <div class="col-1"><%= movie.rating %></div>
+        <div class="col-2">
+          <div class="float-right">
+            <%= link_to 'Edit', edit_admin_movie_path(movie), class: 'btn btn-sm btn-secondary' %>
+            <%= link_to 'Destroy', admin_movie_path(movie), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<%= paginate movies_pag %>

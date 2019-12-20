@@ -1,0 +1,28 @@
+<h1>Movies</h1>
+<% movies_pag =  @movies.page(params[:page])%>
+<%= paginate movies_pag %>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col-6 font-weight-bold">Title</div>
+      <div class="col-2 font-weight-bold">Category</div>
+      <div class="col-1 font-weight-bold">Votes</div>
+      <div class="col-1 font-weight-bold">Rating</div>
+      <div class="col-2 font-weight-bold">Your Rating</div>
+    </div>
+  </li>
+
+  <% movies_pag.each do |movie| %>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-6"><%= link_to movie.title, admin_movie_path(movie) %></div>
+        <div class="col-2"><%= movie.category.name %></div>
+        <div class="col-1"><%= movie.votes %></div>
+        <div class="col-1"><%= movie.rating %></div>
+        <div class="col-2">Your Rating</div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<%= paginate movies_pag %>
