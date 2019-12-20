@@ -6,7 +6,7 @@
     <div class="dropdown float-right">
       <b>Category: </b>
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= params[:category].present? ? Category.find(params[:category]).name : 'All Categories' %>
+        <%= params[:category].present? ? Category.friendly.find(params[:category]).name : 'All Categories' %>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <% if params[:category].present? %>
@@ -14,7 +14,9 @@
           <div class="dropdown-divider"></div>
         <% end %>
         <% Category.all.each do |category| %>
-          <a class="dropdown-item" href="/movies/?category=<%= category.id %>"><%= category.name %></a>
+          <% if category.slug != params[:category] %>
+            <a class="dropdown-item" href="/movies/?category=<%= category.slug %>"><%= category.name %></a>
+          <% end %>
         <% end %>
       </div>
     </div>

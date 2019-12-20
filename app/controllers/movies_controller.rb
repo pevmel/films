@@ -1,13 +1,19 @@
 class MoviesController < ApplicationController
   def index
     if params[:category]
-      @movies = Movie.where(category_id: params[:category])
+      category = Category.friendly.find(params[:category])
+      @movies = category.movies
     else
       @movies = Movie.all
     end
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    @movie = Movie.friendly.find(params[:id])
+  end
+
+  private
+  def movie_params
+    params.require(:movie).permit(:title, :description, :votes, :rating, :category_id)
   end
 end
