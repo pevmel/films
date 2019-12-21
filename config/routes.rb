@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :movies
+    resources :categories, except: :show
   end
 
   resources :movies, only: %i[index show]

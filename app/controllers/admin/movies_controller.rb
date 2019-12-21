@@ -4,7 +4,12 @@ class Admin::MoviesController < ApplicationController
 
   # GET /admin/movies
   def index
-    @movies = Movie.all
+    if params[:category]
+      category = Category.friendly.find(params[:category])
+      @movies = category.movies
+    else
+      @movies = Movie.all
+    end
   end
 
   # GET /admin/movies/1
