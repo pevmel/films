@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :movies, only: %i[index show]
   post '/ratings/set_mark', to: 'ratings#set_mark'
 
-  root to: "movies#index"
+  root to: 'movies#index'
 end

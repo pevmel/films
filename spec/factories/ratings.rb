@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :rating do
-    mark { "" }
-    user { "" }
-    movie { "" }
+    mark { '' }
+    user { '' }
+    movie { '' }
   end
 end

@@ -1,5 +1,5 @@
 class Admin::CategoriesController < Admin::AdminController
-  before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :set_category, only: %i[edit update destroy]
 
   # GET /admin/categories
   def index
@@ -12,8 +12,7 @@ class Admin::CategoriesController < Admin::AdminController
   end
 
   # GET /admin/categories/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /admin/categories
   def create
@@ -41,6 +40,7 @@ class Admin::CategoriesController < Admin::AdminController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_category
     @category = Category.friendly.find(params[:id])

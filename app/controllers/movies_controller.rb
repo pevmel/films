@@ -11,9 +11,4 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.friendly.find(params[:id])
   end
-
-  private
-  def movie_params
-    params.require(:movie).permit(:title, :description, :votes, :rating, :category_id)
-  end
 end

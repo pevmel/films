@@ -1,5 +1,5 @@
 class Admin::MoviesController < Admin::AdminController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: %i[show edit update destroy]
 
   # GET /admin/movies
   def index
@@ -9,12 +9,11 @@ class Admin::MoviesController < Admin::AdminController
     else
       @movies = Movie.all
     end
-    #@user_ratings = current_user.ratings if current_user.present?
+    # @user_ratings = current_user.ratings if current_user.present?
   end
 
   # GET /admin/movies/1
-  def show
-  end
+  def show; end
 
   # GET /admin/movies/new
   def new
@@ -22,8 +21,7 @@ class Admin::MoviesController < Admin::AdminController
   end
 
   # GET /admin/movies/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /admin/movies
   def create
@@ -51,13 +49,14 @@ class Admin::MoviesController < Admin::AdminController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_movie
-      @movie = Movie.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def movie_params
-      params.require(:movie).permit(:title, :description, :votes, :rating, :category_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_movie
+    @movie = Movie.friendly.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def movie_params
+    params.require(:movie).permit(:title, :description, :votes, :rating, :category_id)
+  end
 end
