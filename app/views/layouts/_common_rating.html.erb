@@ -1,0 +1,15 @@
+<div class="common-rating d-inline">
+  <% rating.present? && rating > 0 ? star_class = 'fa' : star_class = 'far' %>
+  <div class="star d-inline-block">
+    <i class="<%= star_class %> fa-star" aria-hidden="true"></i>
+  </div>
+  <div class="d-inline-block">
+    <% if rating.present? && rating > 0 %>
+      <div class="rating"><%= rating %></div>
+    <% else %>
+      <div class="no-votes">
+        No<br/>Votes
+      </div>
+    <% end %>
+  </div>
+</div>

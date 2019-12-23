@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-2">
+    <strong>Title:</strong>
+  </div>
+  <div class="col-6">
+    <%= movie.title %>
+  </div>
+  <div class="col-1">
+    <strong>Votes</strong>
+  </div>
+  <div class="col-1">
+    <strong>Rating</strong>
+  </div>
+  <div class="col-2">
+    <strong>Your Rating</strong>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-8"></div>
+  <div class="col-4">
+    <%= render 'layouts/user_rating', user_rating: movie.ratings.find_by(user_id: current_user&.id), movie: movie %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-2">
+    <strong>Category:</strong>
+  </div>
+  <div class="col-10">
+    <%= movie.category.name %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-2">
+    <strong>Description:</strong>
+  </div>
+  <div class="col-10">
+    <%= movie.description %>
+  </div>
+</div>
+<hr/>

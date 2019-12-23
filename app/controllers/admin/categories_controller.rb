@@ -1,5 +1,4 @@
-class Admin::CategoriesController < ApplicationController
-  before_action :check_if_admin
+class Admin::CategoriesController < Admin::AdminController
   before_action :set_category, only: [:edit, :update, :destroy]
 
   # GET /admin/categories
@@ -50,9 +49,5 @@ class Admin::CategoriesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def category_params
     params.require(:category).permit(:name)
-  end
-
-  def check_if_admin
-    redirect_to root_path, alert: 'Only admins have an access to Admin section.' unless current_user&.is_admin?
   end
 end

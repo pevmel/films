@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
   belongs_to :category
+  has_many :ratings, dependent: :destroy
 
   validates :title, presence: true
 

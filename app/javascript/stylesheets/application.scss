@@ -1,1 +1,35 @@
 @import "bootstrap";
+@import "@fortawesome/fontawesome-free";
+
+.star {
+  font-size: 36px;
+  color: #007bff;
+}
+.user-rating {
+  position: relative;
+  width: 350px;
+
+  .common-rating {
+    padding-left: 60px;
+  }
+  .init-button {
+    background-color: lightgray;
+    width: 100px;
+    padding-left: 5px;
+  }
+
+  .star-rating {
+    display: none;
+    background-color: lightgray;
+    border: 1px solid;
+    position: absolute;
+    top: 0px;
+    right: 99px;
+    height: 100%;
+    padding: 16px 3px;
+    z-index: 1;
+  }
+  .small_star, .times-circle {
+    color: #007bff;
+  }
+}

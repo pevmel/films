@@ -1,0 +1,55 @@
+<div class="user-rating">
+  <div class="d-inline-block">
+    <div class="star d-inline-block">
+      <i class="fas fa-users"></i>
+    </div>
+    <div class="votes d-inline-block" id="votes<%= movie.id %>">
+      <h3><%= movie.votes %></h3>
+    </div>
+  </div>
+  <div class="common-rating d-inline" id="common-rating<%= movie.id %>">
+    <div class="star d-inline-block">
+      <i class="fa fa-star" aria-hidden="true"></i>
+    </div>
+    <div class="d-inline-block">
+      <% if movie.rating > 0 %>
+        <div class="c-rating"><h3><%= movie.rating %></h3></div>
+      <% else %>
+        <div class="c-rating">
+          No<br/>Votes
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <dev type="button" data-target="#collapseMark<%= movie.id %>" class="float-right init-button" id="user-rating<%= movie.id %>">
+    <div class="star d-inline-block">
+      <i class="fa fa-star" aria-hidden="true"></i>
+    </div>
+    <div class="d-inline-block">
+      <% if user_rating.present? %>
+        <div class="u-rating"><h3><%= user_rating.mark %></h3></div>
+      <% else %>
+        <div class="u-rating">
+          Vote<br/>this
+        </div>
+      <% end %>
+    </div>
+  </dev>
+  <div class="star-rating" id="collapseMark<%= movie.id %>" value="0">
+    <span>
+      <a class="star-rating-delete" id="movie<%= movie.id %>_delete" title="Delete" rel="nofollow">
+        <span class="times-circle">
+          <i class="fa fa-times-circle" aria-hidden="true"></i>
+        </span>
+      </a>
+      <span class="star-rating-stars">
+        <% (1..10).each do |n| %>
+          <a class="star-rating-star" id="movie<%= movie.id %>_star<%= n %>" title="Click to rate: <%= n %>" rel="nofollow">
+            <span class="small_star"><i class="far fa-star" aria-hidden="true"></i></span>
+          </a>
+        <% end %>
+      </span>
+    </span>
+  </div>
+</div>
