@@ -25,6 +25,6 @@ class RatingsController < ApplicationController
   private
 
   def check_user_login
-    redirect_to new_user_session_path if current_user.blank?
+    redirect_to new_user_session_path, alert: 'You need to sign-in to Vote' if current_user.blank?
   end
 end
