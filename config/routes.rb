@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :movies, only: %i[index show]
-  post '/ratings/set_mark', to: 'ratings#set_mark'
+  post '/ratings/set_new_rating', to: 'ratings#set_new_rating'
 
   root to: 'movies#index'
 end

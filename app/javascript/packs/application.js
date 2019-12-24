@@ -55,7 +55,7 @@ function getMovieIdAndMark(id) {
 function sendAndSetMark(movie_id, mark) {
   $.ajax({
     type: "POST",
-    url: "/ratings/set_mark",
+    url: "/ratings/set_new_rating",
     data: {movie_id: movie_id, mark: mark},
     headers: {
       'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')

@@ -1,7 +1,7 @@
 class RatingsController < ApplicationController
   before_action :check_user_login
 
-  def set_mark
+  def set_new_rating
     if params[:mark].to_i > 0
       @user_rating = current_user.ratings.find_or_create_by(movie_id: params[:movie_id].to_i)
       @user_rating.update(mark: params[:mark])
